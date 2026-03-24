@@ -1,0 +1,56 @@
+{
+    "sheet": {
+        "description": "Ontario Continuing Education Attendance Sheet layout (LANDSCAPE)",
+        "expected_width": 2480,
+        "expected_height": 1754,
+        "orientation": "landscape"
+    },
+    "table": {
+        "name_column": {
+            "x_start_ratio": 0.01,
+            "x_end_ratio": 0.36,
+            "description": "Left side: row#, surname, given name, grade, OEN, DOB, gender"
+        },
+        "attendance_grid": {
+            "x_start_ratio": 0.36,
+            "x_end_ratio": 0.93,
+            "description": "Right side: ~30 attendance session columns"
+        },
+        "header_rows": 0,
+        "header_height_ratio": 0.14,
+        "table_y_start_ratio": 0.14,
+        "table_y_end_ratio": 0.88,
+        "max_student_rows": 35
+    },
+    "cell_classification": {
+        "min_dark_ratio_for_A": 0.06,
+        "max_dark_ratio_for_blank": 0.02,
+        "min_contour_area_ratio": 0.015,
+        "center_mass_tolerance": 0.40,
+        "normalize_background": true,
+        "description": "Thresholds for baseline classifier. Uses Otsu auto-threshold to handle grey/white alternating rows."
+    },
+    "preprocessing": {
+        "target_width": 2480,
+        "adaptive_block_size": 21,
+        "adaptive_c": 10,
+        "denoise_h": 10,
+        "denoise_template_window": 7,
+        "denoise_search_window": 21,
+        "use_clahe": true,
+        "clahe_clip_limit": 2.0,
+        "clahe_tile_size": 8
+    },
+    "line_detection": {
+        "horizontal_kernel_ratio": 0.03,
+        "vertical_kernel_ratio": 0.03,
+        "hough_threshold": 100,
+        "min_line_length_ratio": 0.1,
+        "max_line_gap": 20,
+        "merge_distance_pixels": 12
+    },
+    "debug": {
+        "save_intermediates": true,
+        "output_dir": "debug_output"
+    }
+}

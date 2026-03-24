@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance AI — Sheet Recognition</title>
+    <link rel="stylesheet" href="/static/style.css?v=5">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>📋 Attendance AI</h1>
+            <p class="subtitle">Ontario Continuing Education — Attendance Sheet Recognition</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📷</div>
+                <h2>Upload Attendance Sheet</h2>
+                <p>Drag & drop a photo here, or click to browse</p>
+                <p class="upload-hint">Supports JPG, PNG, BMP, TIFF, WebP (max 20 MB)</p>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+            </div>
+            <div class="preview-container" id="previewContainer" style="display:none;">
+                <img id="previewImage" alt="Preview">
+                <button class="btn btn-secondary" id="clearBtn">✕ Clear</button>
+            </div>
+            <button class="btn btn-primary" id="processBtn" disabled>
+                <span id="btnText">Process Sheet</span>
+                <span id="btnSpinner" class="spinner" style="display:none;"></span>
+            </button>
+        </section>
+
+        <!-- Progress -->
+        <section class="progress-section" id="progressSection" style="display:none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text" id="progressText">Processing...</p>
+        </section>
+
+        <!-- Results -->
+        <section class="results-section" id="resultsSection" style="display:none;">
+            <h2>Results</h2>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="card card-total">
+                    <div class="card-value" id="totalCount">0</div>
+                    <div class="card-label">Students</div>
+                </div>
+                <div class="card card-total">
+                    <div class="card-value" id="colCount">0</div>
+                    <div class="card-label">Date Columns</div>
+                </div>
+                <div class="card card-present">
+                    <div class="card-value" id="presentCount">0</div>
+                    <div class="card-label">Total Present</div>
+                </div>
+                <div class="card card-absent">
+                    <div class="card-value" id="absentCount">0</div>
+                    <div class="card-label">Total Absent</div>
+                </div>
+            </div>
+
+            <!-- Student Table -->
+            <div class="table-wrapper" id="tableWrapper">
+                <table class="student-table" id="studentTable">
+                    <thead id="studentTableHead">
+                    </thead>
+                    <tbody id="studentTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="export-buttons">
+                <button class="btn btn-export" id="exportCsvBtn">📄 Export CSV</button>
+                <button class="btn btn-export" id="exportJsonBtn">📋 Export JSON</button>
+                <button class="btn btn-export" id="copyListBtn">📑 Copy Student List</button>
+            </div>
+
+            <!-- Copyable Student List -->
+            <div class="copyable-section" id="copyableSection">
+                <h3>Attendance Grid <span class="copy-hint" id="copyStatus"></span></h3>
+                <textarea id="copyableList" class="copyable-list" readonly rows="10"></textarea>
+            </div>
+
+            <!-- Timing -->
+            <div class="timing-section" id="timingSection">
+                <h3>Processing Time</h3>
+                <div id="timingDetails"></div>
+            </div>
+
+            <!-- Debug Images -->
+            <div class="debug-section" id="debugSection">
+                <h3>Debug Visualizations</h3>
+                <div class="debug-images" id="debugImages"></div>
+            </div>
+        </section>
+
+        <!-- Warning -->
+        <div class="warning-banner" id="warningBanner" style="display:none;">
+            <span id="warningText"></span>
+        </div>
+
+        <!-- Error -->
+        <div class="error-banner" id="errorBanner" style="display:none;">
+            <span id="errorText"></span>
+        </div>
+    </div>
+
+    <script src="/static/app.js?v=5"></script>
+</body>
+</html>
