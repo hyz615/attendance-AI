@@ -5,11 +5,7 @@ AI-powered attendance sheet recognition for Ontario Continuing Education.
 ## Quick Start
 
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the server
-uvicorn server:app --reload --host 0.0.0.0 --port 8000
+.\deploy.bat
 ```
 
 Then open **http://localhost:8000** in your browser.
